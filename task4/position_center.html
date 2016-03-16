@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>单位与居中问题</title>
+	<style>
+		.outer{
+			position: relative;
+			width: 70%;
+			height: 600px;
+			border: 1px solid #ddd;
+			margin-bottom: 20px;
+			overflow: hidden;
+		}
+		.inner{
+			position: absolute;
+			width: 400px;
+			height: 200px;
+			background-color: #ccc;
+			overflow: hidden;
+			/*centering*/
+			/*transform:translateX(-50%);*/
+			
+			/*transform:translateY(-50%);*/
+			transform: translate(-50%,-50%);
+			left: 50%;
+			top: 50%;
+		}
+		.left-up ,.right-down{
+			position: absolute;
+			width: 100px;
+			height: 100px;
+			background-color: #fc0;
+			border-radius: 50%;
+			z-index: -1;
+		}
+		.left-up{
+			/*float: left;*/
+			margin-top: -50px;
+			margin-left: -50px;
+		}
+		.right-down{
+			/*float: right;*/
+			margin-top:150px;
+			margin-left: 350px;
+		}
+
+
+		/*分割线*/
+
+
+		.outer2{
+			margin-bottom: 20px;
+			width: 70%;
+			height: 600px;
+			border: 1px solid #ddd;
+			/*line-height: 100%;*/
+
+			display:table-cell;
+			text-align:center;
+			vertical-align:middle;
+		}
+		.inner2{
+			
+			min-width: 400px;
+			min-height: 200px;
+			background-color: #ccc;
+
+			/*centering*/
+			vertical-align:middle;
+			display:inline-block;
+			
+		}
+
+		.outer3{
+			border: 1px solid #ddd;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 300px;
+		}
+		
+	</style>
+</head>
+<body>
+	<div class="outer">
+		<div class="inner">
+			<div class="left-up"></div>
+			<div class="right-down"></div>
+			<p>灰色高度是根据内容动态变化的）水平垂直居中的解决方案</p>
+		</div>
+	</div>
+
+	<div class="outer2">
+		<div class="inner2">
+			<p>利用table-cell灰色高度是根据内容动态变化的）水平垂直居中的解决方案</p>
+		</div>
+	</div>
+
+	<div class="outer3">
+		<div class="inner3">
+			<p>灰色高度是根据内容动态变化的）水平垂直居中的解决方案</p>
+		</div>
+	</div>
+</body>
+</html>
