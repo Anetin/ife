@@ -1,0 +1,44 @@
+task14:
+先进行过滤，选出空气质量指数大于60的城市(好方法)
+过滤大于60的数据的方法除了用if判断语句还可以用js自带的filter方法：
+ var goodData = aqiData.filter(function(item, index, array){
+ return (item[1] > 60);
+ });
+ console.log(goodData);
+
+
+************************************************************************************************************
+task15:
+一.从ul中获取li的方法：
+var source=document.getElementById('source');
+dom_li=source.getElementsByTagName('li') ;
+
+或者：
+dom_li=source.children; //注意children的用法
+
+或者：
+dom_li=source.querySelectorAll('li'); //注意querySelectorAll的用法
+
+注意：
+var dom_li=document.getElementsByTagName('li');//若从li获取 则后面再append之后会出错
+二.从li中获取数据可用的方法：
+var liText=dom_li[i].innerText;
+data2.push(liText.slice(0,2));
+data2.push(liText.slice(liText.length-2));
+data.push(data2);
+
+或者：
+var liText=dom_li[i].innerText;
+data2.push(liText.match(/(.*?)空气/[1]));
+data2.push(dom_li[i].getElementsByTagName('b')[0].innerText);
+data.push(data2);
+
+// sty="joiwefjoi"; //懒惰模式正则：因为匹配到第一个"就结束了一次匹配。不会继续向后匹配。
+// sty.match(/(.*?)fj/)[1];
+// 输出："joiwe"
+
+或者：split(" ");
+var liText=dom_li[i].innerText;
+data.push(liText.split("空气质量："));
+
+***************************************************************************************************************

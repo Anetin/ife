@@ -1,0 +1,129 @@
+<!-- http://www.nowcoder.com/questionTerminal/bfaf16463f1d40178d8d2ad404a08c68 -->
+<!-- 思路：事件委托，排序，数据模型与视图分离，DOM操作 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>表格排序</title>
+    <style>
+    table {
+        width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    th {
+        background-color: #ccc;
+    }
+    
+    th:hover {
+        cursor: pointer;
+    }
+    
+    th,
+    td {
+        text-align: center;
+        padding: 5px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="tab">
+        <table border="1" cellspacing="0">
+            <thead>
+                <tr>
+                    <th class="name">姓名</th>
+                    <th class="power">力量</th>
+                    <th class="speed">敏捷</th>
+                    <th class="iq">智力</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <script>
+    var data = [{
+        name: '德鲁伊',
+        power: 17,
+        speed: 24,
+        iq: 13
+    }, {
+        name: '月之骑士',
+        power: 15,
+        speed: 22,
+        iq: 16
+    }, {
+        name: '众神之王',
+        power: 19,
+        speed: 15,
+        iq: 20
+    }, {
+        name: '流浪剑客',
+        power: 23,
+        speed: 15,
+        iq: 14
+    }];
+    //定义放置元素函数
+    var appendItems = function appendItems(_data) {
+            var data = _data;
+            var my_table = document.getElementsByTagName('table');
+            var my_tbody = document.getElementsByTagName('tbody');
+            my_tbody[0].innerHTML = "";
+            for (var i = 0, length = data.length; i < length; i++) {
+                var tr = document.createElement('tr');
+                for (var index in data[i]) {
+                    tr.innerHTML += '<td>' + data[i][index] + '</td>';
+                }
+                my_tbody[0].appendChild(tr);
+            }
+        }
+        //放置元素
+    appendItems(data);
+
+    var atab = document.getElementsByTagName('table')[0];
+    var click_flag = true;
+    atab.addEventListener("click", function(ev) {
+        var ev = ev || window.event;
+        var target = ev.target || ev.srcElement; // 事件源
+        if (target.nodeName.toLowerCase() == 'th') {
+            var attr = target.className;
+            if (click_flag) {
+                data = data.sort(function(a, b) {
+                    if (a[attr] > b[attr]) {
+                        return 1;
+                    } else if (a[attr] < b[attr]) {
+                        return -1;
+                    } else if (a[attr] === b[attr]) {
+                        return 0;
+                    }
+                });
+                click_flag = false;
+            } else {
+                data = data.sort(function(a, b) {
+                    if (a[attr] > b[attr]) {
+                        return -1;
+                    } else if (a[attr] < b[attr]) {
+                        return 1;
+                    } else if (a[attr] === b[attr]) {
+                        return 0;
+                    }
+                });
+                click_flag = true;
+            }
+
+            //重新放置元素
+            appendItems(data);
+
+        } else {
+            return false;
+        }
+
+
+    });
+    </script>
+</body>
+
+</html>
