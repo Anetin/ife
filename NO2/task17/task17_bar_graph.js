@@ -56,7 +56,14 @@ var pageState = {
  * 渲染图表
  */
 function renderChart() {
-
+  var chart=document.getElementsByClassName('aqi-chart-wrap')[0];
+  chart.innerHTML="";
+  var color='',content='';
+  for(var index in chartData){
+    color='#'+Math.floor(Math.random() * 0xFFFFFF).toString(16);
+    content+=' <span title=" '+index+':'+chartData[index]+' " style=" height: '+chartData[index]+'px;background-color:'+color+' "></span>';
+  }
+  chart.innerHTML=content;
 }
 
 /**
@@ -86,7 +93,7 @@ function graTimeChange() {
   	console.log(pageState.nowGraTime);
   // });
   // 设置对应数据
-
+initAqiChartData();
 
 
   // 调用图表渲染函数
@@ -109,9 +116,11 @@ function citySelectChange() {
   }
   console.log(pageState.nowSelectCity);
 
-  // 设置对应数据
 
+  // 设置对应数据
+initAqiChartData();
   // 调用图表渲染函数
+  renderChart();
 }
 
 /**
@@ -172,28 +181,54 @@ function initCitySelector() {
  */
 function initAqiChartData() {
   // 将原始的源数据处理成图表需要的数据格式
-//   pageState = {
-//   nowSelectCity: -1,
-//   nowGraTime: "day"
-// }
-// debugger
-
- var city=cities[pageState.nowSelectCity];
+  // debugger
+ var city=cities[parseInt(pageState.nowSelectCity)];
  var nowChartData=aqiSourceData[city]; 
  console.log(nowChartData);
 
 
-
+ chartData={};
   if(pageState.nowGraTime == "day"){
-  	nowChartData=nowChartData;
-  	for(var item in )
+  	chartData=nowChartData;
   }else if(pageState.nowGraTime == "week"){
-  	for(var i=0;i<nowChartData.length;i++){
-
+      var dayindex=0;
+      var weekindex=0;
+      var sumVal=0;
+  	for(var item in nowChartData){
+        sumVal+=nowChartData[item];
+        dayindex++;
+        if((new Date(item).getDay()) ==6){
+          weekindex++;
+          chartData['NO'+weekindex+'week']=Math.floor(sumVal/dayindex);
+          sumVal=0;
+          dayindex=0;
+        }
   	}
-  }else (pageState.nowGraTime =="mouth"){
+    if(dayindex!=0){//最后一周不满7天
+      weekindex++;
+      chartData['NO'+weekindex+'week']=Math.floor(sumVal/dayindex);
+    }
+  }else if(pageState.nowGraTime =="mouth"){
+    // debugger
+      var sumMouth=0, daysum=0, mouth=0;
+      for(var index in nowChartData){
+          sumMouth+=nowChartData[index];
+          daysum++;
+          if ((new Date(index)).getMonth()!=mouth) {
+            mouth++;
+            chartData['NO'+mouth+'mouth']=Math.floor(sumMouth/daysum);
+            sumMouth=0;
+            daysum=0;
+          }    
+      }
 
+      if (daysum!=0) {
+        mouth++;
+        chartData['NO'+mouth+'mouth']=Math.floor(sumMouth/daysum);
+      }
   }
+
+  
   // 处理好的数据存到 chartData 中
 }
 
@@ -204,6 +239,7 @@ function init() {
   initGraTimeForm()
   initCitySelector();
   initAqiChartData();
+   renderChart();
 }
 
 init();
