@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>三角</title>
+	<style>
+		#demo {
+		    width: 100px;
+		    height: 100px;
+		    background-color: #fff;
+		    position: relative;
+		    border: 2px solid #333;
+		}
+		 
+		#demo:after, #demo:before {
+		    border: solid transparent;
+		    content: ' ';
+		    height: 0;
+		    left: 100%;
+		    position: absolute;
+		    width: 0;
+		}
+		 
+		#demo:after {
+		    border-width: 10px;
+		    border-left-color: #fff;
+		    top: 20px;
+		}
+		 
+		#demo:before {
+		    border-width: 12px;
+		    border-left-color: #000;
+		    top: 18px;
+		}
+
+
+
+
+
+
+		#demo2 {
+		    width: 100px;
+		    height: 100px;
+		    border: 2px solid #000;
+		    position: relative;
+		}
+		#demo2:after {
+		    content: '';
+		    display: block;
+		    width: 14.1421px;
+		    height: 14.1421px;
+		    border-top: 2px solid #000;
+		    border-right: 2px solid #000;
+		    position: absolute;
+		    right: -10px;
+		    top: 20px;
+		    transform: rotate(45deg);
+		    background-color: #fff;
+		}
+
+	</style>
+</head>
+<body>
+	<div id='demo'></div><br>
+	<div id='demo2'></div>
+</body>
+</html>
+

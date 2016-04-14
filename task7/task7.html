@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+	<meta charset="UTF-8">
+	<title>实现常见的技术产品官网的页面架构及样式布局</title>
+	<link rel="stylesheet" href="task7.css">
+	<link rel="stylesheet" href="grid.css">
+</head>
+<body>
+<header>
+	<nav class="navbar">
+		<div class="container-fluid">
+			<div class="nav-header">
+				<img src="logo-sm" alt="logo" class="logo-sm" style="height:40px;width: 40px">
+				<span class="brand">新世界</span>
+			</div>
+
+			<div class="nav-link">
+				<ul class="nav">
+					<li class="active">首页</li>
+					<li class="active">最新活动</li>
+					<li class="active">项目介绍</li>
+					<li class="active">爱心社区</li>
+					<li class="active">关于我们</li>
+					<li class="active"><img src="user.png" alt="登录" class="user"><span class="logo-in">登录</span></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+</header>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<section class="begin">
+				<h1 class="title">Time of new life</h1>
+				<p>新时代，年轻的人们让我们一起</p><br>
+				<p>体验新生活，享受新技术</p>
+				<button class="btn btn-go">开始体验</button>
+			</section>
+		</div>		
+	</div>
+
+	<div class="row">
+		<div class="col-md-3">
+			<figure class="nav">
+				<img src="" alt="" class="cicle">
+				<span>打造全新世界观，让你更爱你的生活</span>
+			</figure>
+		</div>
+		<div class="col-md-3">
+			<figure class="nav">
+				<img src="" alt="" class="flag">
+				<span>丰富多彩的公益活动，发挥新世界主人公意识</span>
+			</figure>
+		</div>
+		<div class="col-md-3">
+			<figure class="nav">
+				<img src="" alt="" class="flower">
+				<span>时尚的新理念，超前体验未知的生活</span>
+			</figure>
+		</div>
+		<div class="col-md-3">
+			<figure class="nav">
+				<img src="" alt="" class="square">
+				<span>完善的培养机制，培养你全新的世界观</span>
+			</figure>
+		</div>
+	</div>
+</div>
+
+<section class="some-new">
+	<img src="" alt="" class="logo">
+	<h1>关于新世界，你不知道的还有什么？</h1>
+</section>
+
+<div class="container">
+	<div class="row">
+		<section class="city-act">
+			<h2>查找新世界城市活动信息</h2>
+			<hr>
+			<p>每个城市有不同的活动信息，请自主查询您所需要了解的城市</p>
+			<form action="" class="find-act">
+				<div class="col-md-3">
+					<select name="country">
+					<option value="China" selected>中国</option>
+					<option value="American">美国</option>
+					<option value="France">法国</option>
+					<option value="England">英国</option>
+					</select>
+				</div>
+				<div class="col-md-3">
+					<select name="province">
+					<option value="bj" selected>北京市</option>
+					<option value="tj">天津市</option>
+					<option value="hb">河北省</option>
+					<option value="sx">陕西省</option>
+					<option value="nmg">内蒙古自治区</option>
+					<option value="ln">辽宁省</option>
+					</select>
+				</div>
+				<div class="col-md-3">
+					<select name="city">
+					<option value="nanchang" selected>南昌</option>
+					<option value="jian">吉安</option>					
+					<option value="jiujiang">九江</option>
+					</select>
+				</div>
+				<div class="col-md-3">
+					<button class="btn search">搜索</button>
+				</div>
+			</form>
+		</section>
+	</div>
+
+	<div class="row">
+		<div class="col-md-3">
+			<figure>
+			  <img src="#" alt="act1" width="200" height="320">
+			  <figcaption><h3>北京的活动</h3>社区大联盟</figcaption>
+			</figure>
+		</div>
+		<div class="col-md-3">
+			<figure>
+			  <img src="#" alt="act1" width="200" height="320">
+			  <figcaption><h3>上海的活动</h3>夜上海新景观探索</figcaption>
+			</figure>
+		</div>
+		<div class="col-md-3">
+			<figure>
+			  <img src="#" alt="act1" width="200" height="320">
+			  <figcaption><h3>深圳的活动</h3>全新海岸线观点站</figcaption>
+			</figure>
+		</div>
+		<div class="col-md-3">
+			<figure>
+			  <img src="#" alt="act1" width="200" height="320">
+			  <figcaption><h3>香港的活动</h3>奢侈消费大派送</figcaption>
+			</figure>
+		</div>
+	</div>
+
+
+	<div class="row">
+		<aricle class="act-map"></aricle>
+	</div>
+</div>
+
+
+</body>
+</html>
