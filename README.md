@@ -30,3 +30,7 @@ demo http://anetin.github.io/ife/NO2/task15.html
 task16
 code https://github.com/Anetin/ife/blob/gh-pages/NO2/task16/task16.html
 demo http://anetin.github.io/ife/NO2/task16/task16.html
+
+task17
+code https://github.com/Anetin/ife/tree/gh-pages/NO2/task17
+demo http://anetin.github.io/ife/NO2/task17/task17_bar_graph.html
