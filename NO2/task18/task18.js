@@ -82,11 +82,20 @@ right_out.addEventListener("click",function  (ev) {
  });
 
 /*************************deleteItem*************************/
-function deleteItem() {
+// function deleteItem() {
 	var ul=document.getElementById('data_list');
 	ul.addEventListener("click",function  (ev) {
+		console.log(ul.children);
 	 	var ev=ev||windoe.event;
 	 	var target=ev.target|| ev.srcElement;
-	 	var ul_li=target
+	 	console.log(target);
+	 	var ul_li=target;
+	 	for (var i = 0; i < ul.children.length ; i++) {
+	 		if (ul_li === ul.children[i]) {
+	 			// console.log(i);
+	 			listData.splice(i,1);
+	 		}
+	 	}
+	 	ul.removeChild(ul_li);
 	 });
-}
+// }
