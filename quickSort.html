@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>快速排序</title>
+</head>
+<body>
+	
+
+	<script>
+		var arr=[37,22,43,32,19,12,89,26,48,92];
+		function quickSort(arr,low,high) {
+			var pivot;
+			if (low<high) {
+				pivot=partition(arr,low,high);
+				quickSort(arr,low,pivot-1);
+				quickSort(arr,pivot+1,high);
+			}
+		}
+		function partition(arr,low,high) {
+			// var length=arr.length;
+			var t=arr[low];
+			var pivotValue=arr[low];
+			while(low<high){
+				while (low<high && pivotValue<=arr[high]) {
+					high--;
+				}
+				if (low<high) {
+					arr[low]=arr[high];
+					low++;
+				}
+				while(low<high && pivotValue >= arr[low]){
+					low++;
+				}
+				if (low<high) {
+					arr[high]=arr[low];
+					high--;
+				}
+				arr[low]=t;
+			}
+			return low;
+		}
+		console.log("初始数组 " +arr);
+		quickSort(arr,0,arr.length-1);
+		console.log("排序后的数组 " +arr);
+	</script>
+</body>
+</html>
